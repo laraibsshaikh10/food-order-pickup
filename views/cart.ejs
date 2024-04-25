@@ -19,7 +19,14 @@
 
 <body>
     <h1>Cart</h1>
-    <ul id="cart"></ul>
+    <ul id="cart">
+      <% cartItems.forEach(item => { %>
+        <li>
+            <span><%= item.name %> - $<%= item.cost%> <img src='<%= item.photo_url%>'> X <%= item.quantity %></span>
+            <button class="deleteCart" data-id="<%= item.id %>" ">Remove</button>
+        </li>
+    <% }) %>
+    </ul>
 
     <form id="orderForm">
         <input type="number" id="customerAddress" placeholder="Your phone number" required>

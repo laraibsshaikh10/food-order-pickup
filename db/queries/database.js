@@ -22,7 +22,25 @@ const addItemToCart = (menu_item_id, quantity) => {
       return null;
     });
 };
-
+// SELECT carts.id AS cart_id,
+//   menu_items.id AS item_id,
+//   menu_items.name,
+//   menu_items.cost,
+//   menu_items.photo_url,
+//   SUM(carts.quantity) AS quantity
+// FROM carts
+// JOIN menu_items ON carts.menu_item_id = menu_items.id
+// GROUP BY carts.id, menu_items.id, menu_items.name, menu_items.cost, menu_items.photo_url
+const getCartItems = () => {
+  return db.query('SELECT carts.id AS cart_id, menu_items.id AS item_id, menu_items.name, menu_items.cost, menu_items.photo_url, menu_items.rating, carts.quantity FROM carts JOIN menu_items ON carts.menu_item_id = menu_items.id;')
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return null;
+    });
+};
 const deleteItemToCart = (id) => {
   return db.query('DELETE FROM menu_items WHERE id=$1;', [id])  //change query based on how we want the cart to look
     .then(data => {
@@ -34,4 +52,4 @@ const deleteItemToCart = (id) => {
     });
 };
 
-module.exports = { getMenuItems, addItemToCart, deleteItemToCart };
+module.exports = { getMenuItems, addItemToCart, deleteItemToCart, getCartItems };

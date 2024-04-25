@@ -14,10 +14,14 @@ POST /cart/clear: Clear all items from the cart.
 
 // GET /cart: Retrieve all items currently in the customer's cart.
 router.get('/', (req, res) => {
-  // const cartId = req.params.id;
-  // const cartItems = database.getCartItems(cartId);
-  // res.json(cartItems) ;
-  res.render('cart')
+  database
+  .getCartItems()
+  .then(cartItems => {
+    res.render('cart', {cartItems})
+    console.log(cartItems);
+  })
+  .catch(err => console.error(err));
+
 });
 
 // POST /cart/add: Add an item to the cart.
