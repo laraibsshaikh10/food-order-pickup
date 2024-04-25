@@ -42,4 +42,7 @@ function addItemToCart(cartId, newMenuItem)
 function deleteItemFromCart(cartId, menuItemId)
 function deleteAllFromCart(cartId)
 
+function getAllOrders()
+function orderStatusUpdate(orderId, status)
+
 module.exports = { getMenuItems, addItemToCart, deleteItemToCart };

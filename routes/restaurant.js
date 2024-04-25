@@ -94,6 +94,30 @@ Admin Routes:
 GET /admin/orders: Retrieve a list of all orders (might require admin privileges).
 PUT /admin/orders/:id: Update the status of an order (e.g., from "pending" to "completed"). */
 
+/*Static Admin Secret: You could have a predefined secret code or key that an admin must know and provide to access admin functionalities. This could be as simple as an environment variable or a static value within your app code (though be aware, hardcoding such values isn't recommended for production-level apps due to security concerns). Admins could provide this secret through a special input field or via an API request header. */
+
+const adminSecret = 'MyRestaurant';
+function isAuthorizedAdmin(req, res, next) {
+  const secretProvided = req.headers['my-admin-secret'];
+  if (secretProvided === adminSecret) {
+    next();
+  } else {
+    res.status(403).send('Admin Authorization Failed.');
+  }
+}
+
+router.get('/admin/orders', isAuthorizedAdmin, (req, res) => {
+  const restaurantOrders = restaurant.getAllOrders();
+  res.json(orders);
+});
+
+router.put('/admin/orders/:id', isAuthorizedAdmin, (req, res) => {
+  const orderId = req.params.id;
+  const { status } = req.body;
+
+  restaurant.orderStatusUpdate(orderId, status);
+  res.status(200).json({message: `Order Number ${orderId}: Status ${status}`})
+})
 
 /*
 
