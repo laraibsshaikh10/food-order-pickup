@@ -9,9 +9,9 @@ const express = require('express');
 const router  = express.Router();
 const restaurant = require('../db/queries/database');
 
-router.get('/', (req, res) => {
-  res.render('users');
-});
+// router.get('/', (req, res) => {
+//   res.render('users');
+// });
 
 // Middleware to parse JSON bodies
 router.use(express.json());
@@ -38,17 +38,18 @@ router.get('/menu_items/category/:category', (req, res) => {
 });
 
 router.get('/menu_items/:id', (req, res) => {
-  const menuItemsId = restaurant.getMenuItemsbyId();
-  res.json(menuItemsId);
+  const menuItemId = req.params.id;
+  const menuItems = restaurant.getMenuItemsbyId(menuItemId);
+  res.json(menuItems);
 })
 
 
 /*
 Cart Routes:
 GET /cart: Retrieve the items currently in the customer's cart.
-POST /cart/add: Add an item to the cart.
-POST /cart/remove: Remove an item from the cart.
-POST /cart/clear: Clear all items from the cart.
+POST /carts/:id/add: Add an item to the cart.
+POST /carts/:id/delete: Remove an item from the cart.
+POST /carts/:id/deleteAll: Clear all items from the cart.
 */
 router.get('/carts/:id', (req, res) => {
   const cartId = req.params.id;
@@ -57,10 +58,29 @@ router.get('/carts/:id', (req, res) => {
   res.json(cartItems);
 });
 
-router.post('/carts', (req, res) => {
+router.post('/carts/:id/add', (req, res) => {
+  const cartId = req.params.id;
+  const newMenuItem = req.body;
+  restaurant.addItemToCart(cartId, newMenuItem);
+  res.status(200).send('Menu item successfully added to the cart.');
 
-})
+});
 
+
+router.post('/carts/:id/delete', (req, res) => {
+  const cartId = req.params.id;
+  const menuItemId = req.body.menuItemId;
+  restaurant.deleteItemFromCart(cartId, menuItemId);
+  res.status(200).send('Menu item successfully deleted from the cart.');
+
+});
+
+router.post('/carts/:id/deleteAll', (req, res) => {
+  const cartId = req.params.id;
+  restaurant.deleteAllFromCart(cartId);
+  res.status(200).send('All menu items successfully deleted from the cart.');
+
+});
 /*
 
 Order Routes:
@@ -69,6 +89,10 @@ GET /order/:id: Retrieve details of a specific order by its ID.
 
 */
 
+/*
+Admin Routes:
+GET /admin/orders: Retrieve a list of all orders (might require admin privileges).
+PUT /admin/orders/:id: Update the status of an order (e.g., from "pending" to "completed"). */
 
 
 /*
@@ -77,10 +101,7 @@ Notification Routes:
 POST /notify/:phoneNumber: Send a text message to the customer's phone number notifying them of their order status. This route would likely be called internally by your backend once an order is placed successfully.
 */
 
-/*
-Admin Routes:
-GET /admin/orders: Retrieve a list of all orders (might require admin privileges).
-PUT /admin/orders/:id: Update the status of an order (e.g., from "pending" to "completed"). */
+
 
 
 module.exports = router;

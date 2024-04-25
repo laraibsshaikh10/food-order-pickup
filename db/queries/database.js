@@ -34,4 +34,12 @@ const deleteItemToCart = (id) => {
     });
 };
 
+function filterMenuItemsByCategory(category)
+function getMenuItemsbyId(menuItemsId)
+
+function getCartItems(cartId)
+function addItemToCart(cartId, newMenuItem) 
+function deleteItemFromCart(cartId, menuItemId)
+function deleteAllFromCart(cartId)
+
 module.exports = { getMenuItems, addItemToCart, deleteItemToCart };
