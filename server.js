@@ -31,13 +31,15 @@ app.use(express.static('public'));
 
 const restaurantsRoutes = require('./routes/restaurant');
 const menuItemsRoutes = require('./routes/menu_items');
+const cartRoutes = require('./routes/cart');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 app.use('/users', restaurantsRoutes);
-app.use('/menu_items', menuItemsRoutes)
+app.use('/menu_items', menuItemsRoutes);
+app.use('/cart', cartRoutes)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -45,7 +47,7 @@ app.use('/menu_items', menuItemsRoutes)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('users');
 });
 
 app.listen(PORT, () => {

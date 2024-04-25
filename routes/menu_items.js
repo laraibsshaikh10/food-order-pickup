@@ -7,7 +7,7 @@ GET /menu: Retrieve the list of menu items.
 GET /menu/:id: Retrieve a specific menu item by its ID.
 */
 router.get('/', (req, res) => {
-  menuItems = database
+  database
   .getMenuItems()
   .then(menuItems => {
     res.render('index', {menuItems})
