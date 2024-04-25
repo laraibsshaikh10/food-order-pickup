@@ -18,7 +18,23 @@
 </head>
 
 <body>
-  <h1>Have fun! </h1>
+  <h1>Food Menu</h1>
+    <ul id="foodMenu">
+        <% menuItems.forEach(item => { %>
+            <li>
+                <span><%= item.name %> - $<%= item.cost%> <img src='<%= item.photo_url%>'> </span>
+                <button class="add-to-cart" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>">Add to Cart</button>
+            </li>
+        <% }) %>
+    </ul>
+
+    <h2>Cart</h2>
+    <ul id="cart"></ul>
+
+    <form id="orderForm">
+        <input type="number" id="customerAddress" placeholder="Your phone number" required>
+        <button type="submit">Place Order</button>
+    </form>
 </body>
 
 </html>

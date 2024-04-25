@@ -9,38 +9,9 @@ const express = require('express');
 const router  = express.Router();
 const restaurant = require('../db/queries/database');
 
-router.get('/', (req, res) => {
-  res.render('users');
-});
 
 // Middleware to parse JSON bodies
 router.use(express.json());
-
-/*Menu Routes:
-GET /menu: Retrieve the list of menu items.
-GET /menu/:id: Retrieve a specific menu item by its ID.
-*/
-router.get('/menu_items', (req, res) => {
-  const menuItems = restaurant.getMenuItems();
-  res.json(menuItems);
-});
-
-
-router.get('/menu_items/category/:category', (req, res) => {
-  const category = req.params.category;
-  const filteredItems = restaurant.filterMenuItemsByCategory(category);
-
-  if (filteredItems.length > 0) {
-    res.json(filteredItems);
-  } else {
-    res.status(404).json({message: 'The selected menu item is not found.'});
-  }
-});
-
-router.get('/menu_items/:id', (req, res) => {
-  const menuItemsId = restaurant.getMenuItemsbyId();
-  res.json(menuItemsId);
-})
 
 
 /*
