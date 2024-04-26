@@ -41,8 +41,8 @@ const getCartItems = () => {
       return null;
     });
 };
-const deleteItemToCart = (id) => {
-  return db.query('DELETE FROM menu_items WHERE id=$1;', [id])  //change query based on how we want the cart to look
+const deleteCartItems = (id, menu_item_id) => {
+  return db.query('DELETE FROM carts WHERE id = $1 AND menu_item_id = $2 returning *', [id, menu_item_id])  //change query based on how we want the cart to look
     .then(data => {
       return data.rows;
     })
@@ -52,4 +52,4 @@ const deleteItemToCart = (id) => {
     });
 };
 
-module.exports = { getMenuItems, addItemToCart, deleteItemToCart, getCartItems };
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems };

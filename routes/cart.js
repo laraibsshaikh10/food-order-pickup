@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   .getCartItems()
   .then(cartItems => {
     res.render('cart', {cartItems})
-    console.log(cartItems);
+    // console.log(cartItems);
   })
   .catch(err => console.error(err));
 
@@ -30,11 +30,25 @@ router.post('/', (req, res) => {
   const {menu_item_id, quantity} = req.body;
   database.addItemToCart(menu_item_id, quantity)
   .then((result) => {
-    console.log('ok');
+    console.log('Item was added');
   }).catch((err) => {
     console.error(err)
   });
 })
+
+// POST /cart/remove: Remove an item from the cart.
+router.delete('/', (req, res) => {
+  const { id, menu_item_id } = req.body;
+  database.deleteCartItems(id, menu_item_id)
+    .then((result) => {
+      console.log('Item was deleted');
+      res.sendStatus(200); // Send success response
+    })
+    .catch((err) => {
+      console.error('Error deleting item:', err);
+      res.status(500).send('Error deleting item'); // Send error response
+    });
+});
 
 
 module.exports = router

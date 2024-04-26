@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/user-cart.js"></script>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
       <% cartItems.forEach(item => { %>
         <li>
             <span><%= item.name %> - $<%= item.cost%> <img src='<%= item.photo_url%>'> X <%= item.quantity %></span>
-            <button class="deleteCart" data-id="<%= item.id %>" ">Remove</button>
+            <button class="deleteCart" data-id="<%= item.item_id %>" data-cartId="<%= item.cart_id %>">Remove</button>
         </li>
     <% }) %>
     </ul>
