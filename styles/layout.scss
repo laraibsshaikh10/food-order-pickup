@@ -8,11 +8,10 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   min-height: 100vh;
   background:#ffe7c3;
-
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: bold;

@@ -3,24 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2em;
+  margin-top: 120px;
   width: 75%;
   height: fit-content;
-  background-color: yellow;
+  background-color: white;
 }
 
 .menu-title {
   flex-grow: 1;
   justify-content: center;
-  align-items: center;
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 40px;
+  align-self: flex-start;
+  font-size: 14px;
   width: 100%;
   margin: 0;
-  background-color: pink;
+  padding: 0 0 0 2em;
+  color: #7f591c;
 }
 
 .menu {
@@ -28,15 +25,12 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
   width: 100%;
   height: 400px;
   overflow-y: scroll;
   scroll-behavior: smooth;
   background-color: white;
+  margin: 0 0 1em 0;
 }
 
 .menu-item {
@@ -44,57 +38,49 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
   width: 95%;
-  margin: .5em;
-  background-color: lightgray;
+  margin: 0 0 1em 0;
 }
 
-.item-name {
-  font-weight: bold;
-}
-
-.item-description {
+.item-name-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  font-size: 16px;
   width: 60%;
   margin: .5em;
+}
+
+.item-name {
+  color: #7f591c;
+  margin: 3px 0 3px 0;
+  font-weight: bold;
+}
+
+.item-description {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  margin: 0;
 }
 
 .item-image {
   width: 10;
   margin: .5em;
-  background-color: lightblue;
 }
 
 .item-cost {
-  width: 10%;
-  margin: .5em 2em .5em;
-  background-color: lightblue;
-}
-
-
-
-.playfair-display {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-}
-
-.nunito-sans {
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100,
-    "YTLC" 500;
+  width: 10%;
+  margin: .5em 2em .5em;
 }
 
-
+/* button styling */
 .add-button {
   align-items: center;
   appearance: none;
@@ -132,7 +118,7 @@
 
 .add-button:hover {
   background: #F6F9FE;
-  color: #174ea6;
+  color: #FFB238;;
 }
 
 .add-button:active {
@@ -142,7 +128,7 @@
 
 .add-button:focus {
   outline: none;
-  border: 2px solid #4285f4;
+  border: 2px solid #FFB238;;
 }
 
 .add-button:not(:disabled) {
@@ -163,4 +149,20 @@
 
 .add-button:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+
+/* scrollbar styling */
+.menu::-webkit-scrollbar {
+  width: 14px;               
+}
+
+.menu::-webkit-scrollbar-track {
+  background: white;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: #FFB238;
+  border-radius: 20px;
+  border: 3px solid white;
 }

@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/menu.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/footer.css" />
@@ -51,21 +51,19 @@
     </div>
   </nav>
 
-  <div><p>stuff</p><p>stuff</p></div>
-  <div><img src='./menu_images/ramenwithham.jpg'></div>
   <div class="menu-box">
-    <div>
-      <h1 class="menu-title">Our Menu</h1>
+    <div class="menu-title">
+      <h1>Our Menu</h1>
     </div>
     <ul class="menu" id="foodMenu">
       <% menuItems.forEach(item=> { %>
         <li class="menu-item">
           <span class="item-image"><img src='<%= item.photo_url%>'></span>
-          <span class="item-description">
+          <span class="item-name-description">
             <p class="item-name">
               <%= item.name %>
             </p>
-            <p>
+            <p class="item-description">
               <%= item.description %>
             </p>
           </span>
@@ -89,6 +87,8 @@
       <p>123 Howel's Castle</p>
       <p>Toronto, Ontario LOL OLO</p>
     </div>
+
+  </footer>
 
   </footer>
 
