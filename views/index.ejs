@@ -31,39 +31,34 @@
 
 <body>
 
-  <nav>
-    <div class="nav-left">
-      <img src="https://mystickermania.com/cdn/stickers/anime/howls-castle-calcifer-512x512.png" alt="Calcifer Logo">
-    </div>
-    <div class="nav-mid">
-      <h1>Calcifer's Hearth</h1>
-    </div>
-    <div class="nav-right">
-      <p>Home</p>
-      <p>Contact Us</p>
-      <p>Menu</p>
-      <p>Login</p>
-      <a href="/cart" class="btn-cart">
-        <i class="fa-solid fa-cart-shopping" style="color: #7f591c"></i>
-      </a>
-    </div>
-  </nav>
 
-  <h1>Food Menu</h1>
-  <ul id="foodMenu">
-    <% menuItems.forEach(item=> { %>
-      <li>
-        <span>
-          <%= item.name %> - $<%= item.cost%> <img src='<%= item.photo_url%>'>
-        </span>
-        <button class="addToCartBtn" data-id="<%= item.id %>" data-name="<%= item.name %>"
-          data-price="<%= item.price %>">Add to Cart</button>
-      </li>
-      <% }) %>
-  </ul>
-  <!-- <form class="form-inline" action="/cart" method="GET">
-    <button style="color: red;">Go to cart, NOW!!!!!</button>
-  </form> -->
+
+  <div><p>stuff</p><p>stuff</p></div>
+  <div><img src='./menu_images/ramenwithham.jpg'></div>
+  <div class="menu-box">
+    <div>
+      <h1 class="menu-title">Our Menu</h1>
+    </div>
+    <ul class="menu" id="foodMenu">
+      <% menuItems.forEach(item=> { %>
+        <li class="menu-item">
+          <span class="item-image"><img src='<%= item.photo_url%>'></span>
+          <span class="item-description">
+            <p class="item-name">
+              <%= item.name %>
+            </p>
+            <p>
+              <%= item.description %>
+            </p>
+          </span>
+          <span class="item-cost">$<%= item.cost%>
+              <%= item.rating%></span>
+          <button class="add-button" roll="button" data-id="<%= item.id %>" data-name="<%= item.name %>"
+            data-price="<%= item.price %>">Add to Cart</button>
+        </li>
+        <% }) %>
+    </ul>
+  </div>
 </body>
 
 </html>
