@@ -51,31 +51,31 @@
     </div>
   </nav>
 
-  <div class="menu-box">
-    <div class="menu-title">
-      <h1>Our Menu</h1>
+    <div class="menu-box">
+      <div class="menu-title">
+        <h1>Our Menu</h1>
+      </div>
+      <ul class="menu" id="foodMenu">
+        <% menuItems.forEach(item=> { %>
+          <li class="menu-item">
+            <span class="item-image"><img src='<%= item.photo_url%>'></span>
+            <span class="item-name-description">
+              <p class="item-name">
+                <%= item.name %>
+              </p>
+              <p class="item-description">
+                <%= item.description %>
+              </p>
+            </span>
+            <span class="item-cost">$<%= item.cost%>
+                <%= item.rating%></span>
+            <button class="add-button" roll="button" data-id="<%= item.id %>" data-name="<%= item.name %>"
+              data-price="<%= item.price %>">Add to Cart</button>
+          </li>
+          <% }) %>
+      </ul>
     </div>
-    <ul class="menu" id="foodMenu">
-      <% menuItems.forEach(item=> { %>
-        <li class="menu-item">
-          <span class="item-image"><img src='<%= item.photo_url%>'></span>
-          <span class="item-name-description">
-            <p class="item-name">
-              <%= item.name %>
-            </p>
-            <p class="item-description">
-              <%= item.description %>
-            </p>
-          </span>
-          <span class="item-cost">$<%= item.cost%>
-              <%= item.rating%></span>
-          <button class="add-button" roll="button" data-id="<%= item.id %>" data-name="<%= item.name %>"
-            data-price="<%= item.price %>">Add to Cart</button>
-        </li>
-        <% }) %>
-    </ul>
-  </div>
-  
+
   <footer>
     <div class="footer-left">
       <h3>Find us here!</h3>
@@ -87,9 +87,6 @@
       <p>123 Howel's Castle</p>
       <p>Toronto, Ontario LOL OLO</p>
     </div>
-
-  </footer>
-
   </footer>
 
 </body>
