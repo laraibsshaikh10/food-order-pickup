@@ -1,10 +1,55 @@
+nav {
+  background-color: #FFB238;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 120px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #7f591c;
+}
+
+.nav-left {
+  display: flex;
+  height: 7em;
+  padding-left:10px;
+}
+
+.nav-mid {
+  display: flex;
+  font-size: 1em;
+  width: 90%;
+  margin-top: 30px;
+}
+.nav-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  gap: 15px;
+  margin-top: 30px;
+  padding-right: 10px;
+  font-size: 1.3em;
+}
+
+.btn-cart:focus {
+ color: blue;
+}
+
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: lightgray;
+  background:#ffe7c3;
 }
 
 .menu-box {
