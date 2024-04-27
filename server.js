@@ -37,7 +37,7 @@ const cartRoutes = require('./routes/cart');
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-app.use('/users', restaurantsRoutes);
+app.use('/orders', restaurantsRoutes);
 app.use('/menu_items', menuItemsRoutes);
 app.use('/cart', cartRoutes)
 // Note: mount other resources here, using the same pattern above
@@ -47,7 +47,7 @@ app.use('/cart', cartRoutes)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('users');
+  res.redirect('/menu_items');
 });
 
 app.listen(PORT, () => {

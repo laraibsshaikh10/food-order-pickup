@@ -1,5 +1,6 @@
 // Client facing scripts here
 $(document).ready(function() {
+  // Delete items from cart
   $('.deleteCart').on('click', function() {
     const menu_item_id = $(this).data('id');
     const id = $(this).data('cartid');
@@ -10,8 +11,10 @@ $(document).ready(function() {
       data: { id, menu_item_id }
     })
     .done(function(response) {
-      // console.log({ id, menu_item_id });
       $itemToRemove.remove();
     });
   });
+  //
+
+
 });

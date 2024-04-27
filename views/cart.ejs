@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Cart</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -29,7 +29,8 @@
     </ul>
 
     <form id="orderForm">
-        <input type="number" id="customerAddress" placeholder="Your phone number" required>
+        <input type="text" id="instruction" placeholder="Please let us know if you have any allergies">
+        <input type="tel" pattern="[0-9]{10}" id="phone" placeholder="Your phone number" required>
         <button type="submit">Place Order</button>
     </form>
 </body>

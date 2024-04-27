@@ -51,5 +51,15 @@ const deleteCartItems = (id, menu_item_id) => {
       return null;
     });
 };
+const placeOrder = () => {
+  return db.query(`INSERT INTO orders ()`, [])
+  .then(data => {
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+    return null;
+  })
+}
 
-module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems };
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder };
