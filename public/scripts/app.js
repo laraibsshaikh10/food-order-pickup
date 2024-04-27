@@ -4,7 +4,7 @@ $(document).ready(() => {
   $('.addToCartBtn').on('click', function() {
     const menu_item_id = $(this).data('id');
     const quantity = 1;
-    // console.log(menu_item_id, quantity);
+    console.log(menu_item_id, quantity);
     $.post('/cart', { menu_item_id, quantity }, (res) => {
       console.log('Done');
     });
