@@ -42,9 +42,13 @@
       <h1>Calcifer's Hearth</h1>
     </div>
     <div class="nav-right">
-      <p>Home</p>
+      <a href="/" class="btn-cart" style="color: #7f591c">
+        <p>Home</p>
+      </a>
       <p>Contact Us</p>
-      <p>Menu</p>
+      <a href="/menu_items" class="btn-cart" style="color: #7f591c">
+        <p>Menu</p>
+      </a>
       <p>Login</p>
       <a href="/cart" class="btn-cart">
         <i class="fa-solid fa-cart-shopping" style="color: #7f591c"></i>
@@ -57,7 +61,7 @@
     <div class="cart-title">
       <h1>Cart</h1>
     </div>
-    <ul id="foodMenu" class="cart">
+    <ul id="foodCart" class="cart">
       <% cartItems.forEach(item=> { %>
         <li class="cart-item">
           <span class="item-image"><img src='<%= item.photo_url%>'></span>
@@ -67,7 +71,8 @@
             </p>
           </span>
           <span class="item-cost">
-            $<%= item.cost%>  X <%= item.quantity %></span>
+            $<%= item.cost%> X <%= item.quantity %>
+          </span>
           <button class="deleteCart" data-id="<%= item.item_id %>" data-cartId="<%= item.cart_id %>">Remove</button>
         </li>
         <% }) %>
@@ -78,21 +83,22 @@
       <input type="text" id="customerName" placeholder="Your name" required>
       <label for="customerPhone">Phone Number</label>
       <input type="tel" id="customerPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" required>
-      <button type="submit">Place Order</button>
+      <button type="submit" class="submit-button">Place Order</button>
     </form>
+  </div>
 
-    <footer>
-      <div class="footer-left">
-        <h3>Find us here!</h3>
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-x-twitter"></i>
-      </div>
-      <div class="footer-mid">
-        <p>123 Howel's Castle</p>
-        <p>Toronto, Ontario LOL OLO</p>
-      </div>
-    </footer>
+  <footer>
+    <div class="footer-left">
+      <h3>Find us here!</h3>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-x-twitter"></i>
+    </div>
+    <div class="footer-mid">
+      <p>123 Howel's Castle</p>
+      <p>Toronto, Ontario LOL OLO</p>
+    </div>
+  </footer>
 
 </body>
 
