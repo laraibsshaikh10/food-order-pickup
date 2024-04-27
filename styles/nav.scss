@@ -21,6 +21,7 @@ nav {
   display: flex;
   height: 7em;
   padding-left:10px;
+  z-index: 10;
 }
 
 .nav-mid {
@@ -40,8 +41,13 @@ nav {
   padding-right: 10px;
   font-size: 1.3em;
 }
+
 .nav-right p {
   white-space: nowrap;
+}
+
+.nav-right a {
+  text-decoration: none;
 }
 
 .btn-cart:focus {
