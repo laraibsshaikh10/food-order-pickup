@@ -62,7 +62,7 @@
     <ul class="menu" id="foodMenu">
       <% menuItems.forEach(item=> { %>
         <li class="menu-item">
-          <span class="item-image"><img src='<%= item.photo_url%>'></span>
+          <span class="item-image"><img class="item-img" src='<%= item.photo_url%>' alt="menu item image"></span>
           <span class="item-name-description">
             <p class="item-name">
               <%= item.name %>
