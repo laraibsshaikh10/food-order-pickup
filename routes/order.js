@@ -18,8 +18,32 @@ POST /order: Place a new order. This route should include the items in the cart,
 GET /order/:id: Retrieve details of a specific order by its ID.
 */
 
-// GET /order/:id: Retrieve details of a specific order by its ID.
 
+// POST /order: Place a new order. This route should include the items in the cart, customer details, and any additional order information.
+router.post('/', (req, res) => {
+  const {instructions, client_name, phone_number, quantity, menu_item_id} = req.body;
+  // const order_code = 1;
+  // const total_cost = 1;
+  database
+  .placeOrder(order_code, total_cost, instructions, client_name, phone_number, quantity, menu_item_id)
+  .then(menuItems => {
+    res.render('order')
+    console.log(menuItems);
+  })
+  .catch(err => console.error(err));
+});
+
+
+// GET /order/:id: Retrieve details of a specific order by its ID.
+router.get('/', (req, res) => {
+  database
+  .placeOrder()
+  .then(menuItems => {
+    res.render('order')
+    // console.log(menuItems);
+  })
+  .catch(err => console.error(err));
+});
 
 /*
 

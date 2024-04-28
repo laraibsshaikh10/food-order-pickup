@@ -51,8 +51,8 @@ const deleteCartItems = (id, menu_item_id) => {
       return null;
     });
 };
-const placeOrder = () => {
-  return db.query(`INSERT INTO orders ()`, [])
+const placeOrder = (order_code, total_cost, instructions, client_name, phone_number, quantity, menu_item_id) => {
+  return db.query(`INSERT INTO orders (order_code, total_cost, instructions, client_name, phone_number, quantity, menu_item_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [order_code, total_cost, instructions, client_name, phone_number, quantity, menu_item_id])
   .then(data => {
     return data.rows;
   })
@@ -61,5 +61,15 @@ const placeOrder = () => {
     return null;
   })
 }
+const getOrder = () => {
+  return db.query('SELECT orders.*, menu_items.name FROM orders JOIN menu_items ON orders.menu_item_id = menu_items.id;')
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return null;
+    });
+};
 
-module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder };
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder };

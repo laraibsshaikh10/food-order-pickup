@@ -28,6 +28,7 @@ CREATE TABLE orders (
   order_code VARCHAR(255),
   total_cost INTEGER NOT NULL DEFAULT 0,
   instructions TEXT,
+  client_name VARCHAR(255),
   phone_number INTEGER NOT NULL,
   date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   quantity INTEGER NOT NULL,
