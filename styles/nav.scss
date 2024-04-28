@@ -13,7 +13,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  color: #7f591c;
+  color: #00202e;
   z-index: 10;
 }
 
@@ -44,16 +44,22 @@ nav {
 
 .nav-right p {
   white-space: nowrap;
+  color: #00202e;
 }
+
+.nav-right p:hover {
+  color: #f55536;
+}
+
 
 .nav-right a {
   text-decoration: none;
 }
 
-.btn-cart:focus {
- color: blue;
+.fa-solid {
+  color: #00202e;
 }
 
-.btn-cart:hover {
+.fa-solid:hover {
   color: #f55536;
 }
