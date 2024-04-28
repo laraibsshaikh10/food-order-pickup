@@ -45,6 +45,7 @@
   width: 150px;
   height: 100px;
   object-fit: cover;
+  border-radius: 10%;
 }
 
 .item-name-description {
@@ -53,6 +54,7 @@
   justify-content: center;
   align-items: start;
   font-size: 16px;
+  height: 100px;
   width: 60%;
   margin: .5em;
 }
