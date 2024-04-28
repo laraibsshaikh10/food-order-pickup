@@ -59,6 +59,10 @@
     <div class="menu-title">
       <h1>Our Menu</h1>
     </div>
+    <div class="categories">
+      <span>Appetizers</span><span>Mains</span>
+        <span>Drinks</span><spanp>Desserts</span>
+    </div>
     <ul class="menu" id="foodMenu">
       <% menuItems.forEach(item=> { %>
         <li class="menu-item">
@@ -71,8 +75,7 @@
               <%= item.description %>
             </p>
           </span>
-          <span class="item-cost">$<%= item.cost%>
-              <%= item.rating%></span>
+          <span class="item-cost">$<%= item.cost%></span>
           <button class="addToCartBtn" roll="button" data-id="<%= item.id %>" data-name="<%= item.name %>"
             data-price="<%= item.price %>">Add to Cart</button>
         </li>

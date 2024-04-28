@@ -9,14 +9,22 @@
 }
 
 .menu-title {
-  flex-grow: 1;
   justify-content: center;
   align-self: flex-start;
   font-size: 14px;
   width: 100%;
   margin: 0;
   padding: 0 0 0 2em;
-  color: #7f591c;
+  color: #003f5c;
+}
+
+.categories {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  margin: 5px 0 25px 0;
+  font-size: 20px;
+  color: #003f5c;
 }
 
 .menu {
@@ -60,7 +68,7 @@
 }
 
 .item-name {
-  color: #7f591c;
+  color: #003f5c;
   margin: 3px 0 3px 0;
   font-weight: bold;
 }
