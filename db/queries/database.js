@@ -13,7 +13,7 @@ const getMenuItems = () => {
 
 
 const addItemToCart = (menu_item_id, quantity) => {
-  return db.query('INSERT INTO carts (menu_item_id, quantity) VALUES ($1, $2) RETURNING *', [menu_item_id, quantity])  //change query based on how we want the cart to look
+  return db.query('INSERT INTO carts (menu_item_id, quantity) VALUES ($1, $2)  RETURNING *', [menu_item_id, quantity])  //change query based on how we want the cart to look
     .then(data => {
       return data.rows[0];
     })
