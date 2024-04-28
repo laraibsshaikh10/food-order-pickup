@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const database = require('../db/queries/database');
-
+const {sum, randomCodeGenerator} = require('./helper/helper-function')
 
 // Middleware to parse JSON bodies
 router.use(express.json());
@@ -21,11 +21,19 @@ GET /order/:id: Retrieve details of a specific order by its ID.
 
 // POST /order: Place a new order. This route should include the items in the cart, customer details, and any additional order information.
 router.post('/', (req, res) => {
-  const {instructions, client_name, phone_number, quantity, menu_item_id} = req.body;
-  // const order_code = 1;
-  // const total_cost = 1;
+  const {instructions, client_name, phone_number} = req.body;
+  let order_code = randomCodeGenerator()
+
   database
-  .placeOrder(order_code, total_cost, instructions, client_name, phone_number, quantity, menu_item_id)
+  .getCartItems()
+  .then(carts => {
+    const total_cost = sum(carts);
+    return {total_cost}
+  })
+  .then((result) => {
+    const {total_cost} = result
+    return database.placeOrder(order_code, total_cost, instructions, client_name, phone_number)
+  })
   .then(menuItems => {
     res.render('order')
     console.log(menuItems);
