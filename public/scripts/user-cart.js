@@ -26,7 +26,7 @@ $(document).ready(function() {
     const phone_number = $('#customerPhone').val()
     const client_name = $('#customerName').val()
     // console.log(instructions, phone_number, client_name);
-    $.post('order', {instructions, phone_number, client_name}, (res) => {console.log('Done')})
+    $.post('order', {instructions, phone_number, client_name}, (res) => {window.location.href = `http://localhost:8080${res.redirect}`;})
   })
 
 

@@ -30,7 +30,7 @@ CREATE TABLE orders (
   total_cost INTEGER NOT NULL DEFAULT 0,
   instructions TEXT,
   client_name VARCHAR(255),
-  phone_number VARCHAR(10) NOT NULL,
+  phone_number VARCHAR(12) NOT NULL,
   status VARCHAR(20),
   date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

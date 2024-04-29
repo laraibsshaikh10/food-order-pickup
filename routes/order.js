@@ -11,13 +11,12 @@ const database = require('../db/queries/database');
 const {sum, randomCodeGenerator} = require('./helper/helper-function')
 
 // Middleware to parse JSON bodies
-router.use(express.json());
+// router.use(express.json());
 /*
 Order Routes:
 POST /order: Place a new order. This route should include the items in the cart, customer details, and any additional order information.
 GET /order/:id: Retrieve details of a specific order by its ID.
 */
-
 
 // POST /order: Place a new order. This route should include the items in the cart, customer details, and any additional order information.
 router.post('/', (req, res) => {
@@ -35,23 +34,25 @@ router.post('/', (req, res) => {
     return database.placeOrder(order_code, total_cost, instructions, client_name, phone_number)
   })
   .then(menuItems => {
-    res.render('order')
-    console.log(menuItems);
+    res.json({ redirect: `/order/${menuItems.order_id}` });
   })
   .catch(err => console.error(err));
 });
-
 
 // GET /order/:id: Retrieve details of a specific order by its ID.
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
+  let order_code = req.params.id
   database
-  .placeOrder()
-  .then(menuItems => {
-    res.render('order')
-    // console.log(menuItems);
+  .getOrder(order_code)
+  .then(orderDetails => {
+    res.render('order', {orderDetails})
+    // console.log(orderDetails);
   })
+  .then((result) => {
+    return database.deleteCart()})
   .catch(err => console.error(err));
 });
+
 
 /*
 

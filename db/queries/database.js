@@ -41,8 +41,20 @@ const getCartItems = () => {
       return null;
     });
 };
+//Delete type of items from cart
 const deleteCartItems = (id, menu_item_id) => {
   return db.query('DELETE FROM carts WHERE id = $1 AND menu_item_id = $2 returning *', [id, menu_item_id])  //change query based on how we want the cart to look
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return null;
+    });
+};
+//Delete all items from cart
+const deleteCart = () => {
+  return db.query('DELETE FROM carts RETURNING *')  //change query based on how we want the cart to look
     .then(data => {
       return data.rows;
     })
@@ -55,7 +67,6 @@ const deleteCartItems = (id, menu_item_id) => {
 const placeOrder = (order_code, total_cost, instructions, client_name, phone_number) => {
   return db.query(`INSERT INTO orders (order_code, total_cost, instructions, client_name, phone_number, status) VALUES ($1, $2, $3, $4, $5, 'pending') RETURNING *`, [order_code, total_cost, instructions, client_name, phone_number])
   .then(data => {
-    console.log(data.rows[0]);
     return db.query(`INSERT INTO order_details(order_id, quantity, menu_item_id)
     SELECT $1, quantity, menu_item_id from carts
     returning *`, [data.rows[0].order_code])
@@ -69,10 +80,9 @@ const placeOrder = (order_code, total_cost, instructions, client_name, phone_num
   })
 }
 
-
-/////////////NEED FIX
-const getOrder = () => {
-  return db.query('SELECT orders.*, menu_items.name FROM orders JOIN menu_items ON orders.menu_item_id = menu_items.id;')
+// Get order by its order_id
+const getOrder = (order_id) => {
+  return db.query('SELECT order_details.quantity, menu_items.name, orders.* FROM order_details JOIN menu_items ON order_details.menu_item_id = menu_items.id JOIN orders ON order_details.order_id = orders.order_code WHERE order_id = $1;', [order_id])
     .then(data => {
       return data.rows;
     })
@@ -82,4 +92,4 @@ const getOrder = () => {
     });
 };
 
-module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder };
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder, deleteCart };

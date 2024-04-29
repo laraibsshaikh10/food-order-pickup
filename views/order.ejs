@@ -34,24 +34,29 @@
 
 <body>
 
-  <nav>
-    <div class="nav-left">
-      <img src="https://mystickermania.com/cdn/stickers/anime/howls-castle-calcifer-512x512.png" alt="Calcifer Logo">
+  <a href="/cart" class="btn-cart">
+    <i class="fa-solid fa-cart-shopping" style="color: #7f591c"></i>
+  </a>
+  <p>Thank you so much for ordering</p>
+  <% if (orderDetails.length > 0) { %>
+    <ul>
+      <% orderDetails.forEach(item => { %>
+        <li>
+          <p><%= item.name %> X <%= item.quantity %></p>
+        </li>
+      <% }) %>
+    </ul>
+    <div>
+        <div>Order ID: <%= orderDetails[0].order_code %></div>
+        <div>Order for: <%= orderDetails[0].client_name %></div>
+        <div>Time of the order: <%= orderDetails[0].date_time %></div>
+        <div>Total: <%= orderDetails[0].total_cost %></div>
+        <div>Order note: <%= orderDetails[0].instructions %></div>
+        <div>Telephone: <%= orderDetails[0].phone_number %></div>
+      <% } else { %>
+        <p>No order details found</p>
+      <% } %>
     </div>
-    <div class="nav-mid">
-      <h1>Calcifer's Hearth</h1>
-    </div>
-    <div class="nav-right">
-      <p>Home</p>
-      <p>Contact Us</p>
-      <p>Menu</p>
-      <p>Login</p>
-      <a href="/cart" class="btn-cart">
-        <i class="fa-solid fa-cart-shopping" style="color: #7f591c"></i>
-      </a>
-    </div>
-  </nav>
-
     <footer>
       <div class="footer-left">
         <h3>Find us here!</h3>
