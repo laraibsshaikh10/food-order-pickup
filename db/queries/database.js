@@ -22,8 +22,7 @@ const addItemToCart = (menu_item_id, quantity) => {
       return null;
     });
 };
-const getCartItems = () => {
-  return db.query(`SELECT
+/* SELECT
   menu_items.id AS item_id,
   menu_items.name,
   menu_items.cost,
@@ -37,7 +36,9 @@ GROUP BY
   menu_items.id,
   menu_items.name,
   menu_items.cost,
-  menu_items.photo_url;`)
+  menu_items.photo_url; */
+const getCartItems = () => {
+  return db.query('SELECT carts.id AS cart_id, menu_items.id AS item_id, menu_items.name, menu_items.cost, menu_items.photo_url, menu_items.rating, carts.quantity FROM carts JOIN menu_items ON carts.menu_item_id = menu_items.id;')
     .then(data => {
       return data.rows;
     })

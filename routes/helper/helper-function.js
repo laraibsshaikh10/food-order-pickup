@@ -12,4 +12,24 @@ const randomCodeGenerator = () => {
   }
   return code;
 }
-module.exports = {sum, randomCodeGenerator}
+
+function mergeQuantity(arr) {
+  const resultMap = new Map();
+
+  // Iterate over the input array
+  arr.forEach(obj => {
+      // Check if the name exists in the resultMap
+      if (resultMap.has(obj.name)) {
+          // If it exists, increase the quantity
+          const existingObj = resultMap.get(obj.name);
+          existingObj.quantity += obj.quantity;
+      } else {
+          // If it doesn't exist, add it to the resultMap
+          resultMap.set(obj.name, { ...obj });
+      }
+  });
+
+  // Convert the Map values to an array and return
+  return Array.from(resultMap.values());
+}
+module.exports = {sum, randomCodeGenerator, mergeQuantity}

@@ -61,8 +61,9 @@
     <div class="cart-title">
       <h1>Cart</h1>
     </div>
+    <% const cart = mergeQuantity(cartItems) %>
     <ul id="foodCart" class="cart">
-      <% cartItems.forEach(item=> { %>
+      <% cart.forEach(item=> { %>
         <li class="cart-item">
           <span class="cart-item-image"><img class="item-img" src= <%= item.photo_url%>></span>
           <span class="cart-description">

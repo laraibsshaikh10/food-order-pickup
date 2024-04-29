@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const database = require('../db/queries/database');
-const {sum} = require('./helper/helper-function')
+const {sum, mergeQuantity} = require('./helper/helper-function')
 
 
 /*
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
   .getCartItems()
   .then(cartItems => {
     totalPrice = sum(cartItems)
-    res.render('cart', {cartItems, totalPrice})
+    res.render('cart', {cartItems, totalPrice, mergeQuantity})
     console.log(totalPrice);
   })
   .catch(err => console.error(err));

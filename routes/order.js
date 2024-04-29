@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const database = require('../db/queries/database');
-const {sum, randomCodeGenerator} = require('./helper/helper-function')
+const {sum, randomCodeGenerator, mergeQuantity} = require('./helper/helper-function')
 
 // Middleware to parse JSON bodies
 // router.use(express.json());
@@ -45,8 +45,7 @@ router.get('/:id', (req, res) => {
   database
   .getOrder(order_code)
   .then(orderDetails => {
-    res.render('order', {orderDetails})
-    console.log(orderDetails);
+    res.render('order', {orderDetails, mergeQuantity})
   })
   .then((result) => {
     return database.deleteCart()})
