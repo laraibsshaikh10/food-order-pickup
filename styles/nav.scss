@@ -13,7 +13,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  color: #7f591c;
+  color: #00202e;
   z-index: 10;
 }
 
@@ -21,6 +21,7 @@ nav {
   display: flex;
   height: 7em;
   padding-left:10px;
+  z-index: 10;
 }
 
 .nav-mid {
@@ -40,14 +41,25 @@ nav {
   padding-right: 10px;
   font-size: 1.3em;
 }
+
 .nav-right p {
   white-space: nowrap;
+  color: #00202e;
 }
 
-.btn-cart:focus {
- color: blue;
+.nav-right p:hover {
+  color: #f55536;
 }
 
-.btn-cart:hover {
+
+.nav-right a {
+  text-decoration: none;
+}
+
+.fa-solid {
+  color: #00202e;
+}
+
+.fa-solid:hover {
   color: #f55536;
 }

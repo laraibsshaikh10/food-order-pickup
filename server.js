@@ -47,7 +47,7 @@ app.use('/cart', cartRoutes)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.redirect('/menu_items');
+  res.render('home');
 });
 
 app.listen(PORT, () => {

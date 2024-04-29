@@ -17,7 +17,7 @@
   width: 100%;
   margin: 0;
   padding: 0 0 0 2em;
-  color: #7f591c;
+  color: #003f5c;
 }
 
 .cart {
@@ -26,11 +26,12 @@
   justify-content: start;
   align-items: center;
   width: 100%;
-  height: 400px;
-  overflow-y: scroll;
+  height: 480px;
+  overflow-y: auto;
   scroll-behavior: smooth;
   background-color: white;
   margin: 0 0 1em 0;
+  padding-top: 1em;
 }
 
 .cart-item {
@@ -42,7 +43,7 @@
   margin: 0 0 1em 0;
 }
 
-.item-name-description {
+.cart-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,38 +51,32 @@
   font-size: 16px;
   width: 60%;
   margin: .5em;
+  padding: 0 0 0 1em;
 }
 
-.item-name {
-  color: #7f591c;
+.cart-item-name {
+  color: #003f5c;
   margin: 3px 0 3px 0;
   font-weight: bold;
 }
 
-.item-description {
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  margin: 0;
-}
-
-.item-image {
+.cart-item-image {
   width: 10;
   margin: .5em;
 }
 
-.item-cost {
+.cart-item-cost {
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
   width: 10%;
   margin: .5em 2em .5em;
+  display: flex;
 }
 
 /* button styling */
-.add-button {
+.submit-button, .deleteCart {
   align-items: center;
   appearance: none;
   background-color: #fff;
@@ -89,7 +84,7 @@
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
   box-sizing: border-box;
-  color: #3c4043;
+  color: #003f5c;
   cursor: pointer;
   display: inline-flex;
   fill: currentcolor;
@@ -116,52 +111,52 @@
   margin-right: 1em;
 }
 
-.add-button:hover {
+.submit-button:hover, .deleteCart:hover {
   background: #F6F9FE;
   color: #FFB238;;
 }
 
-.add-button:active {
+.submit-button:active, .deleteCart:active {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
   outline: none;
 }
 
-.add-button:focus {
+.submit-button:focus, .deleteCart:focus {
   outline: none;
   border: 2px solid #FFB238;;
 }
 
-.add-button:not(:disabled) {
+.submit-button:not(:disabled), .deleteCart:not(:disabled) {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-.add-button:not(:disabled):hover {
+.submit-button:not(:disabled):hover, .deleteCart:not(:disabled):hover {
   box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
 }
 
-.add-button:not(:disabled):focus {
+.submit-button:not(:disabled):focus, .deleteCart:not(:disabled):focus {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-.add-button:not(:disabled):active {
+.submit-button:not(:disabled):active, .deleteCart:not(:disabled):active {
   box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
 }
 
-.add-button:disabled {
+.submit-button:disabled, .deleteCart:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
 
 /* scrollbar styling */
-.menu::-webkit-scrollbar {
+.cart::-webkit-scrollbar {
   width: 14px;               
 }
 
-.menu::-webkit-scrollbar-track {
+.cart::-webkit-scrollbar-track {
   background: white;
 }
 
-.menu::-webkit-scrollbar-thumb {
+.cart::-webkit-scrollbar-thumb {
   background-color: #FFB238;
   border-radius: 20px;
   border: 3px solid white;
@@ -171,4 +166,6 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
+  margin-bottom: 10px;
+  color: #003f5c;
 }

@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
   .getOrder(order_code)
   .then(orderDetails => {
     res.render('order', {orderDetails})
-    // console.log(orderDetails);
+    console.log(orderDetails);
   })
   .then((result) => {
     return database.deleteCart()})

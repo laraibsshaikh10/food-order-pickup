@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Cart</title>
+  <title>Calcifer's Hearth</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/footer.css" />
   <link rel="stylesheet" href="/styles/cart.css" />
+  <link rel="stylesheet" href="/styles/home.css" />
 
   <!--External Font Families-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -29,46 +30,36 @@
     rel="stylesheet">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/user-cart.js"></script>
+  <script defer src="/scripts/home.js"></script>
+
 </head>
 
-<body>
+<body class="home-page">
+  
+  <div class="home-title">
+    <h1>Calcifer's Hearth</h1>
+  </div>
+  <div class="home-banner">
+    <img
+      src="https://64.media.tumblr.com/2b26da39aa99d90b363f140094e9a64b/b3956f8e366a8ea8-86/s1280x1920/6efef185a01c8283b890abdf0b09b8b58772cfca.jpg"
+      alt="Calcifer Banner">
+  </div>
 
-  <a href="/cart" class="btn-cart">
-    <i class="fa-solid fa-cart-shopping" style="color: #7f591c"></i>
-  </a>
-  <p>Thank you so much for ordering. We will send you a notification as soon as your order is ready!</p>
-  <% if (orderDetails.length > 0) { %>
-    <ul>
-      <% orderDetails.forEach(item => { %>
-        <li>
-          <p><%= item.name %> X <%= item.quantity %></p>
-        </li>
-      <% }) %>
-    </ul>
-    <div>
-        <div>Order ID: <%= orderDetails[0].order_code %></div>
-        <div>Order for: <%= orderDetails[0].client_name %></div>
-        <div>Time of the order: <%= orderDetails[0].date_time %></div>
-        <div>Total: <%= orderDetails[0].total_cost %></div>
-        <div>Order note: <%= orderDetails[0].instructions %></div>
-        <div>Telephone: <%= orderDetails[0].phone_number %></div>
-      <% } else { %>
-        <p>No order details found</p>
-      <% } %>
+
+  <div class="home-body">
+    <div class="home-quote">
+      <h2>Welcome to Calcifer's Hearth!</h2>
+      <p>"I'm not afraid of you. I've got Cup Ramen on my side." - "Ponyo", 2008 </p>
+      <div class="home-button">
+        <a href="/menu_items" class="btn-view-menu">
+          <h3>View Our Menu</h3>
+        </a>
+      </div>
     </div>
-    <footer>
-      <div class="footer-left">
-        <h3>Find us here!</h3>
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-x-twitter"></i>
-      </div>
-      <div class="footer-mid">
-        <p>123 Howel's Castle</p>
-        <p>Toronto, Ontario LOL OLO</p>
-      </div>
-    </footer>
+    <div class="home-logo"></div>
+      <img src="https://mystickermania.com/cdn/stickers/anime/howls-castle-calcifer-512x512.png" alt="Calcifer Logo">
+    </div>
+  </div>
 
 </body>
 
