@@ -24,17 +24,27 @@ router.get('/', (req, res) => {
 
 });
 
-// POST /cart/add: Add an item to the cart.
-
+// POST /cart/add: Add an item to the cart or update quantity if it already exists
 router.post('/', (req, res) => {
   const {menu_item_id, quantity} = req.body;
-  database.addItemToCart(menu_item_id, quantity)
-  .then((result) => {
-    console.log('Item was added');
-  }).catch((err) => {
-    console.error(err)
-  });
-})
+
+  database.countCartItems(menu_item_id)
+    .then((count) => {
+      if (Number(count.count) === 0) {
+        database.addItemToCart(menu_item_id, quantity)
+        .then((result) => {
+          console.log('Item was added');
+        })
+      } else {
+        database.updateItemQuantity(menu_item_id)
+          .then((result) => {
+            console.log('Quantity updated');
+          })
+      }
+    }).catch((err) => {
+      console.error(err)
+    });
+ });
 
 // POST /cart/remove: Remove an item from the cart.
 router.delete('/', (req, res) => {

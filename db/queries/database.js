@@ -1,5 +1,6 @@
 const db = require('../connection');
 
+//Return all menu items
 const getMenuItems = () => {
   return db.query('SELECT * FROM menu_items;')
     .then(data => {
@@ -11,6 +12,29 @@ const getMenuItems = () => {
     });
 };
 
+//Return count of a specific menu item
+const countCartItems = (menu_item_id) => {
+  return db.query('SELECT count(*) FROM carts WHERE menu_item_id=$1', [menu_item_id])
+  .then(data => {
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+    return null;
+  });
+};
+
+//Update quantity of a specific menu item
+const updateItemQuantity = (menu_item_id) => {
+  return db.query('UPDATE carts SET quantity=quantity+1 WHERE menu_item_id=$1', [menu_item_id])
+  .then(data => {
+    return data.rows[0];
+  })
+  .catch((err) => {
+    console.log(err.message);
+    return null;
+  });
+};
 
 const addItemToCart = (menu_item_id, quantity) => {
   return db.query('INSERT INTO carts (menu_item_id, quantity) VALUES ($1, $2)  RETURNING *', [menu_item_id, quantity])  //change query based on how we want the cart to look
@@ -62,4 +86,4 @@ const placeOrder = () => {
   })
 }
 
-module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder };
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, countCartItems, updateItemQuantity };
