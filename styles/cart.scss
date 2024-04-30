@@ -26,7 +26,7 @@
   justify-content: start;
   align-items: center;
   width: 100%;
-  height: 480px;
+  height: fit-content;
   overflow-y: auto;
   scroll-behavior: smooth;
   background-color: white;
@@ -66,17 +66,24 @@
 }
 
 .cart-item-cost {
+  justify-content: space-between;
+  align-items: center;
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
-  width: 10%;
+  width: 30%;
   margin: .5em 2em .5em;
   display: flex;
 }
 
+.button-wrapper {
+  justify-content: end;
+  align-items: center;
+}
+
 /* button styling */
-.submit-button, .deleteCart {
+.submit-button, .deleteCart, .decrease-btn, .increase-btn {
   align-items: center;
   appearance: none;
   background-color: #fff;
@@ -109,6 +116,11 @@
   will-change: transform,opacity;
   z-index: 0;
   margin-right: 1em;
+}
+
+.decrease-btn, .increase-btn {
+  height: 40px;
+  padding: 2px 16px
 }
 
 .submit-button:hover, .deleteCart:hover {
@@ -162,10 +174,29 @@
   border: 3px solid white;
 }
 
+.cart-total{
+  display: flex;
+  color: #003f5c;
+  gap: 1em;
+  margin-left: auto;
+  width:28%; 
+}
+
+.total-amount {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  color: #00202e;
+}
+
 .order-form{
   display: flex;
   flex-direction: column;
   gap: 1em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #003f5c;
+  margin-left: auto; /* Move contents to the right */
+  width: 28%;
+  padding-right: 3em;
 }
