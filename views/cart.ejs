@@ -77,7 +77,12 @@
         </li>
         <% }) %>
     </ul>
- 
+
+    <div class = "cart-total">
+      <p>Total: </p>
+      <p class="total-amount"><%= order[0].total_cost %></p>
+    </div>
+
     <form id="orderForm" class="order-form">
       <label for="customerName">Name</label>
       <input type="text" id="customerName" placeholder="Your name" required>
