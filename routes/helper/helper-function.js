@@ -3,6 +3,12 @@ const sum = (obj) => {
   obj.forEach(item => total += item.cost * item.quantity)
   return total
 }
+// const updateQuantity = (obj, id, menu_item_id) => {
+//   obj.forEach(item => {
+//     if (item.cart_id === id && item.item_id === menu_item_id)
+//     {return item.quantity}
+//   })
+// }
 const randomCodeGenerator = () => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let code = '';

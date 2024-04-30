@@ -98,4 +98,27 @@ const getOrder = (order_id) => {
     });
 };
 
-module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder, deleteCart };
+//Increase item by one
+const increaseQuantity = (id, menu_item_id) => {
+  return db.query('UPDATE carts SET quantity = quantity + 1 WHERE id = $1 AND menu_item_id = $2 returning *', [id, menu_item_id])
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return null;
+    });
+};
+
+//Decrease item by one
+const decreaseQuantity = (id, menu_item_id) => {
+  return db.query('UPDATE carts SET quantity = quantity - 1 WHERE id = $1 AND menu_item_id = $2 returning *', [id, menu_item_id])
+    .then(data => {
+      return data.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return null;
+    });
+};
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder, deleteCart, increaseQuantity, decreaseQuantity };

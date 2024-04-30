@@ -72,7 +72,10 @@
             </p>
           </span>
           <span class="cart-item-cost">
-            $<%= item.cost%> X <%= item.quantity %>
+            $<%= item.cost%> X
+            <button class="decrease-btn" data-id="<%= item.item_id %>" data-cartId="<%= item.cart_id %>">-</button>
+            <span id="quantity"><%= item.quantity %></span>
+            <button class="increase-btn" data-id="<%= item.item_id %>" data-cartId="<%= item.cart_id %>">+</button>
           </span>
           <button class="deleteCart" data-id="<%= item.item_id %>" data-cartId="<%= item.cart_id %>">Remove</button>
         </li>

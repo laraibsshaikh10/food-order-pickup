@@ -15,7 +15,45 @@ $(document).ready(function() {
       updateTotalPrice(res.totalPrice)
     });
   });
-  // Update price when delete an item from cart
+  // Increase quantity
+  $('.increase-btn').on('click', function() {
+    const menu_item_id = $(this).data('id');
+    const id = $(this).data('cartid');
+    const quantityElement = $(this).siblings('#quantity');
+    const newQuantity = parseInt(quantityElement.text()) + 1;
+    quantityElement.text(newQuantity);
+    if (newQuantity > 1) {
+      $('.decrease-btn').show()
+    }
+    $.ajax({
+      method: 'PUT',
+      url: '/cart/increment',
+      data: { id, menu_item_id }
+    })
+    .done(function(res) {
+      updateTotalPrice(res.totalPrice);
+    });
+  });
+  // Decrease quantity
+  $('.decrease-btn').on('click', function() {
+    const menu_item_id = $(this).data('id');
+    const id = $(this).data('cartid');
+    const quantityElement = $(this).siblings('#quantity');
+    const newQuantity = parseInt(quantityElement.text()) - 1;
+    if (newQuantity <= 1) {
+      $(this).hide()
+    }
+    quantityElement.text(newQuantity);
+    $.ajax({
+      method: 'PUT',
+      url: '/cart/decrement',
+      data: { id, menu_item_id }
+    })
+    .done(function(res) {
+      updateTotalPrice(res.totalPrice)
+    });
+  });
+  // Update price when change items from cart
   function updateTotalPrice(totalPrice) {
     $('#totalPrice').text('Total Price: $' + totalPrice);
 }
