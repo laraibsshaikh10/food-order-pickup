@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const database = require('../db/queries/database');
+const {sum, mergeQuantity} = require('./helper/helper-function')
 
 
 /*
@@ -12,13 +13,15 @@ POST /cart/clear: Clear all items from the cart.
 */
 
 
+
 // GET /cart: Retrieve all items currently in the customer's cart.
 router.get('/', (req, res) => {
   database
   .getCartItems()
   .then(cartItems => {
-    res.render('cart', {cartItems})
-    // console.log(cartItems);
+    totalPrice = sum(cartItems)
+    res.render('cart', {cartItems, totalPrice, mergeQuantity})
+    console.log(totalPrice);
   })
   .catch(err => console.error(err));
 
@@ -51,9 +54,12 @@ router.delete('/', (req, res) => {
   const { id, menu_item_id } = req.body;
   database.deleteCartItems(id, menu_item_id)
     .then((result) => {
-      console.log('Item was deleted');
-      res.sendStatus(200); // Send success response
+      return database.getCartItems();
     })
+    .then(cartItems => {
+      const totalPrice = sum(cartItems);
+      // Send the updated total price along with a success status
+      res.status(200).json({ totalPrice })})
     .catch((err) => {
       console.error('Error deleting item:', err);
       res.status(500).send('Error deleting item'); // Send error response
