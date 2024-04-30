@@ -20,7 +20,8 @@ CREATE TABLE menu_items (
 CREATE TABLE carts (
   id SERIAL PRIMARY KEY NOT NULL,
   menu_item_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
-  quantity INTEGER NOT NULL
+  quantity INTEGER NOT NULL,
+  UNIQUE (menu_item_id)
 );
 
 
