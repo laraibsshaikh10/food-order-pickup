@@ -10,11 +10,24 @@ $(document).ready(function() {
       url: '/cart',
       data: { id, menu_item_id }
     })
-    .done(function(response) {
+    .done(function(res) {
       $itemToRemove.remove();
+      updateTotalPrice(res.totalPrice)
     });
   });
-  //
+  // Update price when delete an item from cart
+  function updateTotalPrice(totalPrice) {
+    $('#totalPrice').text('Total Price: $' + totalPrice);
+}
+  // Place an order
+  $('#orderForm').on('submit', function (e) {
+    e.preventDefault()
+    const instructions = $('#instruction').val()
+    const phone_number = $('#customerPhone').val()
+    const client_name = $('#customerName').val()
+    // console.log(instructions, phone_number, client_name);
+    $.post('order', {instructions, phone_number, client_name}, (res) => {window.location.href = `http://localhost:8080${res.redirect}`;})
+  })
 
 
 });

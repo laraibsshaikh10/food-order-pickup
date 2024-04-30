@@ -169,3 +169,30 @@
   margin-bottom: 10px;
   color: #003f5c;
 }
+
+.cart-total{
+  display: flex;
+  color: #003f5c;
+  gap: 1em;
+  margin-left: auto;
+  width:28%; 
+}
+
+.total-amount {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  color: #00202e;
+}
+
+.order-form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 20px;
+  color: #003f5c;
+  margin-left: auto;
+  width: 28%;
+  padding-right: 3em;
+}

@@ -61,8 +61,9 @@
     <div class="cart-title">
       <h1>Cart</h1>
     </div>
+    <% const cart = mergeQuantity(cartItems) %>
     <ul id="foodCart" class="cart">
-      <% cartItems.forEach(item=> { %>
+      <% cart.forEach(item=> { %>
         <li class="cart-item">
           <span class="cart-item-image"><img class="item-img" src= <%= item.photo_url%>></span>
           <span class="cart-description">
@@ -77,10 +78,17 @@
         </li>
         <% }) %>
     </ul>
- 
+    
+    <div id="totalPrice" class = "cart-total">
+      <p>Total: </p>
+      <p class="total-amount">$ <%= totalPrice %></p>
+    </div>
+
     <form id="orderForm" class="order-form">
       <label for="customerName">Name</label>
       <input type="text" id="customerName" placeholder="Your name" required>
+      <label for="instruction">Special instruction</label>
+      <input type="text" id="instruction" placeholder="Please let us know if you have any allergies " required>
       <label for="customerPhone">Phone Number</label>
       <input type="tel" id="customerPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx" required>
       <button type="submit" class="submit-button">Place Order</button>
