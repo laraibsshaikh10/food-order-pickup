@@ -34,6 +34,8 @@ router.post('/', (req, res) => {
     return database.placeOrder(order_code, total_cost, instructions, client_name, phone_number)
   })
   .then(menuItems => {
+    sendOrderConfirmation();
+
     res.json({ redirect: `/order/${menuItems.order_id}` });
   })
   .catch(err => console.error(err));
