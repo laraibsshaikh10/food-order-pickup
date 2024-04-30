@@ -33,3 +33,5 @@ function sendOrderConfirmation() {
     });
     
 };
+
+module.exports = {sendOrderConfirmation}
