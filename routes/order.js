@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const database = require('../db/queries/database');
 const {sum, randomCodeGenerator, mergeQuantity} = require('./helper/helper-function')
+const {sendOrderConfirmation} = require('../send-message');
 
 // Middleware to parse JSON bodies
 // router.use(express.json());
@@ -34,6 +35,7 @@ router.post('/', (req, res) => {
     return database.placeOrder(order_code, total_cost, instructions, client_name, phone_number)
   })
   .then(menuItems => {
+    //to send the text message to the customer when they click on place order button
     sendOrderConfirmation();
 
     res.json({ redirect: `/order/${menuItems.order_id}` });
