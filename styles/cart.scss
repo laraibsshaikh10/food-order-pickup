@@ -77,11 +77,6 @@
   display: flex;
 }
 
-.button-wrapper {
-  justify-content: end;
-  align-items: center;
-}
-
 /* button styling */
 .submit-button, .deleteCart, .decrease-btn, .increase-btn {
   align-items: center;
@@ -174,7 +169,7 @@
   border: 3px solid white;
 }
 
-.cart-total{
+.cart-total {
   display: flex;
   color: #003f5c;
   gap: 1em;
@@ -182,13 +177,13 @@
   width:28%; 
 }
 
-.total-amount {
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  color: #00202e;
-}
+// .total-amount {
+//   font-family: "Nunito Sans", sans-serif;
+//   font-optical-sizing: auto;
+//   font-weight: normal;
+//   font-style: normal;
+//   color: #00202e;
+// }
 
 .order-form{
   display: flex;
