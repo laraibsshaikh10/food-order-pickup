@@ -17,16 +17,18 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/category/:category', (req, res) => {
+router.get('/:category', (req, res) => {
   const category = req.params.category;
-  const filteredItems = database.filterMenuItemsByCategory(category);
-
-  if (filteredItems.length > 0) {
-    res.json(filteredItems);
-  } else {
-    res.status(404).json({message: 'The selected menu item is not found.'});
-  }
+  database
+  .filteredItems(category)
+  .then(menuItems => {
+    // res.render('index', {menuItems})
+    res.json({menuItems})
+    // console.log(menuItems);
+  })
+  .catch(err => console.error(err));
 });
+
 
 router.get('/:id', (req, res) => {
   const menuItemsId = database.getMenuItemsbyId();

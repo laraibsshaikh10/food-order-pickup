@@ -12,6 +12,18 @@ const getMenuItems = () => {
     });
 };
 
+// Filter items by category
+const filteredItems = (category) => {
+  return db.query('SELECT * FROM menu_items WHERE category = $1', [category])
+  .then(data => {
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+    return null;
+  });
+};
+
 
 const addItemToCart = (menu_item_id, quantity) => {
   return db.query(`INSERT INTO carts (menu_item_id, quantity) VALUES ($1, $2) ON CONFLICT (menu_item_id) DO UPDATE set quantity = carts.quantity + 1 RETURNING *`, [menu_item_id, quantity])  //change query based on how we want the cart to look
@@ -112,4 +124,4 @@ const decreaseQuantity = (id, menu_item_id) => {
       return null;
     });
 };
-module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder, deleteCart, increaseQuantity, decreaseQuantity };
+module.exports = { getMenuItems, addItemToCart, deleteCartItems, getCartItems, placeOrder, getOrder, deleteCart, increaseQuantity, decreaseQuantity, filteredItems };
