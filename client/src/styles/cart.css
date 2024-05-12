@@ -1,0 +1,189 @@
+.cart-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  width: 75%;
+  height: fit-content;
+  background-color: white;
+}
+
+.cart-title {
+  flex-grow: 1;
+  justify-content: center;
+  align-self: flex-start;
+  font-size: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 2em;
+  color: #003f5c;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background-color: white;
+  margin: 0 0 1em 0;
+  padding-top: 1em;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 0 1em 0;
+}
+
+.cart-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  font-size: 16px;
+  width: 60%;
+  margin: 0.5em;
+  padding: 0 0 0 1em;
+}
+
+.cart-item-name {
+  color: #003f5c;
+  margin: 3px 0 3px 0;
+  font-weight: bold;
+}
+
+.cart-item-image {
+  width: 10;
+  margin: 0.5em;
+}
+
+.cart-item-cost {
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  width: 30%;
+  margin: 0.5em 2em 0.5em;
+  display: flex;
+}
+
+/* button styling */
+.submit-button, .deleteCart, .decrease-btn, .increase-btn {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px, rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #003f5c;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+  margin-right: 1em;
+}
+
+.decrease-btn, .increase-btn {
+  height: 40px;
+  padding: 2px 16px;
+}
+
+.submit-button:hover, .deleteCart:hover {
+  background: #F6F9FE;
+  color: #FFB238;
+}
+
+.submit-button:active, .deleteCart:active {
+  box-shadow: 0 4px 4px 0 rgba(60, 64, 67, 0.3), 0 8px 12px 6px rgba(60, 64, 67, 0.15);
+  outline: none;
+}
+
+.submit-button:focus, .deleteCart:focus {
+  outline: none;
+  border: 2px solid #FFB238;
+}
+
+.submit-button:not(:disabled), .deleteCart:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.submit-button:not(:disabled):hover, .deleteCart:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0, rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
+}
+
+.submit-button:not(:disabled):focus, .deleteCart:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.submit-button:not(:disabled):active, .deleteCart:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0, rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
+}
+
+.submit-button:disabled, .deleteCart:disabled {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+/* scrollbar styling */
+.cart::-webkit-scrollbar {
+  width: 14px;
+}
+
+.cart::-webkit-scrollbar-track {
+  background: white;
+}
+
+.cart::-webkit-scrollbar-thumb {
+  background-color: #FFB238;
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+.cart-total {
+  display: flex;
+  color: #003f5c;
+  gap: 1em;
+  margin-left: auto;
+  width: 28%;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 20px;
+  color: #003f5c;
+  margin-left: auto;
+  /* Move contents to the right */
+  width: 28%;
+  padding-right: 3em;
+}
